@@ -12,7 +12,7 @@ var session = require("express-session")({
   secret:"my-secret",
   resave:false,
   saveUninitialized:true,
-  cookie:{maxAge:60000}
+  cookie:{maxAge:10000}
 });
 
 app.use(session);
@@ -33,10 +33,18 @@ io.sockets.on('connection', function(socket){
 
   if(socket.handshake.session.nickname){
     console.log("세션에 유저의 정보가 이미 저장됨: ",socket.handshake.session.nickname);
-    socket.emit("login",({nickname:socket.handshake.session.nickname, img:socket.handshake.session.img}));
+    socket.nickname = socket.handshake.session.nickname;
+    socket.img = socket.handshake.session.img;
+    let resultData ={};
+    resultData.result = true;
+    resultData.name = socket.nickname;
+    resultData.msg = `Hi ${socket.nickname} !`;
+    resultData.img = socket.img;
+    socket.emit("login-session-result", resultData);
+
   };
- 
- 
+
+
   // 클라이언트에서 'login'이라는 이벤트명으로 서버로 송신하면 여기로....
   // 접속한 클라이언트의 정보가 수신
   socket.on('login', function(data) {

@@ -54,5 +54,22 @@ socket.on('login-result',(data)=>{
     alert(data.msg);
   else{ // 로그인 성공
     alert(data.msg) 
+    // html의 loginArea를 감추고 lobbyArea 보여주기
+    document.getElementById('loginArea').className="d-none"
+    document.getElementById('lobbyArea').className=""
+
+    let userInfo=document.getElementById('userInfo')
+    
+    userInfo.innerHTML=data.name
+
     }
 })
+
+socket.on("login-session-result", (data)=>{
+  document.getElementById('loginArea').className="d-none"
+  document.getElementById('lobbyArea').className=""
+
+  let userInfo=document.getElementById('userInfo')
+    
+  userInfo.innerHTML=data.name
+});

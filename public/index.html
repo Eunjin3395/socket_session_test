@@ -5,6 +5,9 @@
   <head>
     <title>Socket.IO session test</title>
     <style>
+      .d-none {
+        display: none;
+      }
       .selected {
         border: #333 2px solid;
       }
@@ -34,11 +37,18 @@
       </form>
     </div>
 
+    <div id="lobbyArea" class="d-none">
+      <p>lobbyArea</p>
+      <ul id="userInfo"></ul>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
     </script>
 
     <script src="./login.js"></script>
+    <script src="./lobby.js"></script>
+
   </body>
 </html>
