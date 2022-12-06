@@ -1,0 +1,44 @@
+<!-- 백엔드 기능 구현 테스트용 html입니다!! -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO session test</title>
+    <style>
+      .selected {
+        border: #333 2px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loginArea">
+      <form id="loginForm" action="">
+        <ul id="avata">
+          <li id="avatar01" onclick="selAvatar(this.id)">
+            <img src="images/01.png" width="100px" />
+          </li>
+          <li id="avatar02" onclick="selAvatar(this.id)">
+            <img src="images/02.png" width="100px" />
+          </li>
+          <li id="avatar03" onclick="selAvatar(this.id)">
+            <img src="images/03.png" width="100px" />
+          </li>
+          <li id="avatar04" onclick="selAvatar(this.id)">
+            <img src="images/04.png" width="100px" />
+          </li>
+          <li id="avatar05" onclick="selAvatar(this.id)">
+            <img src="images/05.png" width="100px" />
+          </li>
+        </ul>
+        <input id="nickname" autocomplete="off" /><button>Send</button>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
+
+    <script src="./login.js"></script>
+  </body>
+</html>
